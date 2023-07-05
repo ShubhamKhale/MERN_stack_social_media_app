@@ -1,10 +1,12 @@
 import React from 'react'
-import classes from './auth.module.css'
+// import classes from './auth.module.css'
+import "./auth.css"
 import { useState } from 'react'
 import { request } from '../../util/request'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login, register } from '../../redux/authSlice'
+import logo  from './logo.png'
 
 const Auth = () => {
   const [isRegister, setIsRegister] = useState(false)
@@ -58,17 +60,16 @@ const Auth = () => {
   }
 
   return (
-    <div className={classes.container}>
-        <div className={classes.wrapper}>
-            <div className={classes.left}>
-                <h1>WebDevMania</h1>
-                <p>Connect with your close friends and relatives now</p>
+    <div className='container'>
+        <div className='wrapper'>
+            <div className='left'>
+                <img src={logo} alt="ShareNet" className='appLogo' />
             </div>
-            <form onSubmit={handleSubmit} className={classes.right}>
+            <form onSubmit={handleSubmit} className='right'>
                 {isRegister && <input type="text" placeholder='Type username...' onChange={(e) =>setUsername(e.target.value)}/>}
                 <input type="email" placeholder='Type email...' onChange={(e) => setEmail(e.target.value)}/>
                 <input type="password" placeholder='Type password...' onChange={(e) => setPassword(e.target.value)}/>
-                <button className={classes.submitBtn} type="submit">
+                <button className='submitBtn' type="submit">
                     {isRegister ? 'Register' : 'Login'}
                 </button>
                 {
@@ -78,7 +79,7 @@ const Auth = () => {
                 }
             </form>
             {error && (
-                <div className={classes.error}>
+                <div className='error'>
                     {error}
                 </div>
             )}
